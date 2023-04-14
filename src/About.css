@@ -1,0 +1,39 @@
+.about-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .about-container--hover {
+    background-color: #f5f5f5;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  
+  .about-heading {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .about-text {
+    line-height: 1.8;
+    font-size: 1.2rem;
+    text-align: justify;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .about-container {
+      padding: 1rem;
+    }
+  
+    .about-heading {
+      font-size: 1.5rem;
+    }
+  
+    .about-text {
+      font-size: 1rem;
+    }
+  }
+  
