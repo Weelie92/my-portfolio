@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 import './About.css';
 
@@ -29,6 +31,7 @@ function About() {
         Hi, my name is [Your Name] and I am a [Your Profession]. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu
         pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.
       </Typography>
+      <Link to="/about-me">Read more</Link>
     </Box>
   );
 }

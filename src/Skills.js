@@ -1,85 +1,62 @@
-import React, { createRef } from 'react';
-
-import { useRef, useEffect } from 'react';
-
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import LinearProgress from '@mui/material/LinearProgress';
-import HtmlIcon from '@mui/icons-material/Html';
-
-import './Skills.css';
+import React from 'react';
+import { Box } from '@mui/material';
+import SkillBox from './SkillBox';
 
 const skills = [
   {
     name: 'HTML',
-    icon: 'fab fa-html5',
-    proficiency: 80,
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.',
+    description: 'The standard markup language for creating web pages and web applications.',
+    skillLevel: 8,
   },
   {
     name: 'CSS',
-    icon: 'fab fa-css3-alt',
-    proficiency: 70,
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.',
+    description: 'Used to add styles to HTML elements and create visually appealing web pages.',
+    skillLevel: 7,
   },
   {
     name: 'JavaScript',
-    icon: 'fab fa-js-square',
-    proficiency: 90,
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.',
+    description: 'A scripting language used to create interactive web pages and web applications.',
+    skillLevel: 9,
+  },
+  {
+    name: 'React',
+    description: 'A JavaScript library used for building user interfaces and single-page applications.',
+    skillLevel: 7,
   },
   {
     name: 'C#',
-    icon: 'devicon-csharp-plain',
-    proficiency: 75,
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.',
+    description: 'A modern, general-purpose programming language developed by Microsoft.',
+    skillLevel: 6,
   },
   {
     name: 'Unity',
-    icon: 'devicon-unity-plain',
-    proficiency: 70,
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.',
+    description: 'A cross-platform game engine used for creating 2D and 3D games and simulations.',
+    skillLevel: 6,
   },
   {
     name: 'AI',
-    icon: 'fas fa-brain',
-    proficiency: 60,
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.',
+    description: 'The ability of a computer system to perform tasks that normally require human intelligence.',
+    skillLevel: 5,
   },
 ];
 
-function handleIntersection(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const skill = skills.find((skill) => skill.name === entry.target.dataset.skill);
-      const progressBar = entry.target.querySelector('.skill-progress');
-      progressBar.style.width = `${skill.proficiency}%`;
-      observer.unobserve(entry.target);
-    }
-  });
-}
-
 function Skills() {
   return (
-    <Box className="skills-boxes">
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '16px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: '16px',
+        maxWidth: '1000px', // Set max width to prevent overflow
+        overflowX: 'auto', // Add a horizontal scrollbar for smaller screens
+        mx: 'auto', // Center horizontally
+      }}
+    >
       {skills.map((skill) => (
-        <Paper key={skill.name} sx={{ p: 2 }} className="skill-box">
-          <div>
-            <Typography className="skill-name">{skill.name}</Typography>
-            <Typography className="skill-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo
-              lectus, ac blandit elit tincidunt id.
-            </Typography>
-          </div>
-          <LinearProgress variant="determinate" value={skill.proficiency} className="skill-progress" />
-        </Paper>
+        <SkillBox key={skill.name} name={skill.name} description={skill.description} skillLevel={skill.skillLevel} />
       ))}
     </Box>
   );
