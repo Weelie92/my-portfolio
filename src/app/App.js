@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import FrontPage from './FrontPage';
-import AboutMe from './AboutMe';
-import Header from './Header';
+import FrontPage from '../frontpage/FrontPage';
+import AboutMe from '../about/AboutMe';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 import './App.css';
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<FrontPage />} />
         <Route path="/about-me" element={<AboutMe />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

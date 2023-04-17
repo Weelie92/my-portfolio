@@ -1,9 +1,6 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
+import React from 'react';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
 
 function Project({ project }) {
   return (
@@ -14,16 +11,17 @@ function Project({ project }) {
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            borderRadius: 2,
-            boxShadow: 1,
-            transition: 'box-shadow .2s ease-in-out',
+            borderRadius: '8px',
+            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+            transition: 'transform 0.2s ease-out',
+            transform: 'translateY(0)',
             '&:hover': {
-              boxShadow: 5,
+              transform: 'translateY(-5px)',
+              boxShadow: '0px 12px 24px rgba(0, 0, 0, 0.2)',
             },
-            p: 1,
           }}
         >
-          <Box sx={{ position: 'relative', pb: '56.25%', overflow: 'hidden' }}>
+          <Box sx={{ position: 'relative', pb: '56.25%', overflow: 'hidden', borderRadius: '8px' }}>
             <Box
               component="img"
               sx={{
@@ -43,14 +41,13 @@ function Project({ project }) {
               flexGrow: 1,
               bgcolor: 'background.paper',
               p: 2,
+              borderRadius: '0 0 8px 8px',
             }}
           >
             <Typography gutterBottom variant="h5" component="h2" sx={{ fontSize: '1.5rem', fontWeight: 600 }}>
               {project.title}
             </Typography>
-            <Typography sx={{ fontSize: '1.25rem' }}>{project.description}</Typography>
-          </Box>
-          <Box sx={{ p: 1 }}>
+            <Typography sx={{ fontSize: '1.25rem', flex: 1 }}>{project.description}</Typography>
             <Button
               variant="contained"
               fullWidth

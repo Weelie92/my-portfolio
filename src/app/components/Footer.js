@@ -6,7 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 function Footer() {
-  const email = 'andrelie92@gmail.com'; // replace with your email
+  const email = 'andrelie92@gmail.com';
 
   const handleClick = () => {
     window.location.href = `mailto:${email}`;
@@ -24,9 +24,7 @@ function Footer() {
       </Link>
       <Link onClick={handleClick} sx={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', mx: 1 }}>
         <MailOutlineIcon sx={{ fontSize: '1.5rem' }} />
-        <Typography variant="body2" sx={{ ml: 1 }}>
-          Contact
-        </Typography>
+        <span sx={{ ml: 1 }}>Contact</span>
       </Link>
     </Typography>
   );

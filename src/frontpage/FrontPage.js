@@ -1,9 +1,9 @@
 import React from 'react';
-import About from './About';
-import Skills from './Skills';
-import Projects from './Projects';
-import CV from './CV';
-import Footer from './Footer';
+import About from '../about/About';
+import Skills from '../skills/Skills';
+import Projects from '../projects/Projects';
+import CV from '../cv/CV';
+import Footer from '../app/components/Footer';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { createTheme } from '@mui/material/styles';
@@ -42,7 +42,6 @@ function FrontPage() {
       <About />
       <Skills />
       <Projects />
-      <Footer />
     </Box>
   );
 }

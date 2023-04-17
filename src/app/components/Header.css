@@ -100,3 +100,26 @@ header {
     transform: translateY(-100%);
   }
   
+  .social-icons-drawer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons-drawer a {
+    margin-left: 10px;
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons a {
+    margin-left: 10px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .social-icons {
+      display: none;
+    }
+  }

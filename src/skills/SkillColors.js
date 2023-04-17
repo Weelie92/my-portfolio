@@ -21,10 +21,17 @@ const skillColors = {
   SQL: '#d97d04',
   Python: '#306998',
   Git: '#f34f29',
+  Unity: '#000000',
+  'C#': '#9b4f96',
+  AI: '#ff7b00',
 };
 
 const getColorShade = (skillLevel) => {
   return colorShades[skillLevel];
 };
 
-export { skillColors, getColorShade };
+const getSkillColor = (skillName) => {
+  return skillColors[skillName];
+};
+
+export { skillColors, getColorShade, getSkillColor };

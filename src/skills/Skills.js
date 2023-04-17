@@ -1,6 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import SkillBox from './SkillBox';
+import Carousel from 'react-material-ui-carousel';
+import { useTransition, animated } from 'react-spring';
+import { Paper, Button } from '@mui/material';
 
 const skills = [
   {
@@ -26,37 +29,46 @@ const skills = [
   {
     name: 'C#',
     description: 'A modern, general-purpose programming language developed by Microsoft.',
-    skillLevel: 6,
+    skillLevel: 7,
   },
   {
     name: 'Unity',
     description: 'A cross-platform game engine used for creating 2D and 3D games and simulations.',
-    skillLevel: 6,
+    skillLevel: 8,
   },
   {
     name: 'AI',
     description: 'The ability of a computer system to perform tasks that normally require human intelligence.',
-    skillLevel: 5,
+    skillLevel: 8,
   },
 ];
 
 function Skills() {
+  const transitions = useTransition(skills, {
+    keys: (skill) => skill.name,
+    from: { opacity: 0, transform: 'translate3d(100%, 0, 0)' },
+    enter: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    trail: 100, // Add a delay between each skill item for a staggered effect
+  });
+
   return (
     <Box
       sx={{
         display: 'flex',
-        flexWrap: 'wrap',
         gap: '16px',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         paddingTop: '16px',
-        maxWidth: '1000px', // Set max width to prevent overflow
-        overflowX: 'auto', // Add a horizontal scrollbar for smaller screens
-        mx: 'auto', // Center horizontally
+        paddingBottom: '16px',
+        maxWidth: '100%',
+        overflowX: 'auto',
+        mx: 'auto',
       }}
     >
-      {skills.map((skill) => (
-        <SkillBox key={skill.name} name={skill.name} description={skill.description} skillLevel={skill.skillLevel} />
+      {transitions((props, skill) => (
+        <animated.div style={props}>
+          <SkillBox key={skill.name} name={skill.name} description={skill.description} skillLevel={skill.skillLevel} width="100%" height="225px" />
+        </animated.div>
       ))}
     </Box>
   );
