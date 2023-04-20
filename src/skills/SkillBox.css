@@ -1,0 +1,25 @@
+/* Add the following CSS rules to hide the scrollbar when not hovering the div */
+
+/* Hide scrollbar */
+.skill-box::-webkit-scrollbar {
+    width: 0.4em;
+}
+
+/* Track */
+.skill-box::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+
+/* Handle */
+.skill-box::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: 3px solid #F5F5F5;
+}
+
+/* Handle on hover */
+.skill-box:hover::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 20px;
+    border: 3px solid #F5F5F5;
+}

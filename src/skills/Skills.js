@@ -1,9 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import SkillBox from './SkillBox';
-import Carousel from 'react-material-ui-carousel';
 import { useTransition, animated } from 'react-spring';
-import { Paper, Button } from '@mui/material';
 
 const skills = [
   {
@@ -63,11 +61,15 @@ function Skills() {
         maxWidth: '100%',
         overflowX: 'auto',
         mx: 'auto',
+        scrollbarWidth: 'none' /* Hide the scrollbar */,
+        '&::-webkit-scrollbar': {
+          display: 'none' /* Hide the scrollbar in WebKit browsers */,
+        },
       }}
     >
       {transitions((props, skill) => (
         <animated.div style={props}>
-          <SkillBox key={skill.name} name={skill.name} description={skill.description} skillLevel={skill.skillLevel} width="100%" height="225px" />
+          <SkillBox key={skill.name} name={skill.name} description={skill.description} skillLevel={skill.skillLevel} width="150px" height="225px" />
         </animated.div>
       ))}
     </Box>

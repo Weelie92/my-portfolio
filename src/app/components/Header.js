@@ -1,34 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useScrollTrigger, AppBar, Toolbar, Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { AppBar, FormControlLabel, Toolbar, Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import Switch from '@mui/material/Switch';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 import './Header.css';
+import LanguageSwitch from './LanguageSwitch';
 
-function ElevationScroll(props) {
-  const { children } = props;
-
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    listener: (window) => {
-      const scrollPos = window.pageYOffset;
-      const scrollingDown = scrollPos > prevScrollPos;
-      setPrevScrollPos(scrollPos);
-      return scrollingDown;
-    },
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-}
 function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -42,44 +24,42 @@ function Header() {
 
   return (
     <>
-      <ElevationScroll>
-        <AppBar position="static">
-          <div className="social-icons">
-            <a href="https://www.linkedin.com/in/andrelie/" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <LinkedInIcon sx={{ fontSize: '2rem' }} />
-            </a>
-            <a href="https://github.com/Weelie92" target="_blank" rel="noopener" aria-label="GitHub">
-              <GitHubIcon sx={{ fontSize: '2rem' }} />
-            </a>
-            <a href="mailto:andrelie92@gmail.com" aria-label="Contact">
-              <MailOutlineIcon sx={{ fontSize: '2rem' }} />
-            </a>
+      <AppBar position="static">
+        <LanguageSwitch />
+        <div className="social-icons">
+          <a href="https://www.linkedin.com/in/andrelie/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <LinkedInIcon sx={{ fontSize: '2rem' }} />
+          </a>
+          <a href="https://github.com/Weelie92" target="_blank" rel="noopener" aria-label="GitHub">
+            <GitHubIcon sx={{ fontSize: '2rem' }} />
+          </a>
+          <a href="mailto:andrelie92@gmail.com" aria-label="Contact">
+            <MailOutlineIcon sx={{ fontSize: '2rem' }} />
+          </a>
+        </div>
+        <Toolbar>
+          <div>
+            <div className="menu-button" onClick={toggleDrawer(true)}>
+              <Menu />
+            </div>
           </div>
 
-          <Toolbar>
-            <div>
-              <div className="menu-button" onClick={toggleDrawer(true)}>
-                <Menu />
-              </div>
-            </div>
-
-            <div className="header-button-desktop">
-              <Button color="inherit" component={Link} to="/">
-                Home
-              </Button>
-              <Button color="inherit" component={Link} to="/about-me">
-                About Me
-              </Button>
-              <Button color="inherit" component={Link} to="/projects">
-                Projects
-              </Button>
-              <Button color="inherit" component={Link} to="/contact">
-                Contact
-              </Button>
-            </div>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
+          <div className="header-button-desktop">
+            <Button color="inherit" component={Link} to="/">
+              Home
+            </Button>
+            <Button color="inherit" component={Link} to="/about-me">
+              About Me
+            </Button>
+            <Button color="inherit" component={Link} to="/projects">
+              Projects
+            </Button>
+            <Button color="inherit" component={Link} to="/contact">
+              Contact
+            </Button>
+          </div>
+        </Toolbar>
+      </AppBar>
 
       <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
         <List>

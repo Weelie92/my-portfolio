@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Paper, Typography, useTheme } from '@mui/material';
 import { getColorShade, getSkillColor } from './SkillColors';
 
+import './SkillBox.css';
+
 function SkillBox({ name, description, skillLevel }) {
   const theme = useTheme();
 
@@ -19,6 +21,7 @@ function SkillBox({ name, description, skillLevel }) {
           alignContent: 'space-between',
           alignItems: 'center',
           paddingBottom: '5px',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
         }}
       >
         <Box
@@ -28,7 +31,8 @@ function SkillBox({ name, description, skillLevel }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: `linear-gradient(to bottom right, ${getSkillColor(name)}, ${getColorShade(skillLevel)})`,
+            background: `linear-gradient(135deg, ${getSkillColor(name)}, ${getColorShade(skillLevel)})`,
+            borderBottom: '1px solid rgba(0, 0, 0, 0.15)',
           }}
         >
           <Typography
@@ -53,13 +57,15 @@ function SkillBox({ name, description, skillLevel }) {
             flexDirection: 'column',
             textAlign: 'center',
             justifyContent: 'space-evenly',
+            borderLeft: '1px solid rgba(0, 0, 0, 0.15)',
+            borderRight: '1px solid rgba(0, 0, 0, 0.15)',
           }}
         >
           <Typography variant="body2" className="skill-description skill-text" sx={{ color: '#757575' }}>
             {description}
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', borderTop: '1px solid rgba(0, 0, 0, 0.15)' }}>
           {[...Array(10)].map((_, index) => (
             <Box
               className="skill-level"
